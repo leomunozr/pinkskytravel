@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Pink Sky Travel
+
+This is a Next.js 14+ project for Pink Sky Travel agency. It uses Sanity.io as a Headless CMS and Tailwind CSS for styling.
 
 ## Getting Started
 
-First, run the development server:
+1.  **Install Dependencies:**
+    ```bash
+    npm install
+    ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2.  **Environment Variables:**
+    Create a `.env.local` file in the root directory and add your Sanity credentials:
+    ```bash
+    NEXT_PUBLIC_SANITY_PROJECT_ID="tu_project_id"
+    NEXT_PUBLIC_SANITY_DATASET="production"
+    ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3.  **Run Development Server:**
+    ```bash
+    npm run dev
+    ```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+4.  **Open Sanity Studio:**
+    Visit `http://localhost:3000/studio` to manage content.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Deployment on Netlify
 
-## Learn More
+This project is configured for easy deployment on Netlify.
 
-To learn more about Next.js, take a look at the following resources:
+1.  **Connect to Git:**
+    Push this repository to GitHub/GitLab/Bitbucket and connect it in the Netlify dashboard.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2.  **Build Settings:**
+    Netlify should automatically detect the settings from `netlify.toml`:
+    *   **Build Command:** `npm run build`
+    *   **Publish Directory:** `.next`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3.  **Environment Variables (Critical):**
+    In the Netlify Dashboard, go to **Site configuration > Environment variables** and add the following:
 
-## Deploy on Vercel
+    *   `NEXT_PUBLIC_SANITY_PROJECT_ID`: Your Sanity Project ID.
+    *   `NEXT_PUBLIC_SANITY_DATASET`: Your Dataset name (usually `production`).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+    *Without these variables, the site will not be able to fetch content from the CMS.*
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Project Structure
+
+*   `src/app`: App Router pages.
+*   `src/components`: UI components (Hero, Navbar, BespokeForm, etc).
+*   `src/sanity`: Sanity configuration, client, and schemas.
+*   `sanity.config.ts`: Sanity Studio configuration.

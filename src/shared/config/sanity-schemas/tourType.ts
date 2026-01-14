@@ -2,7 +2,7 @@ import { defineField, defineType } from 'sanity'
 
 export const tourType = defineType({
   name: 'tour',
-  title: 'Tour',
+  title: 'Tours',
   type: 'document',
   fields: [
     defineField({
@@ -22,10 +22,10 @@ export const tourType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'destination',
-      title: 'Destination',
+      name: 'destino',
+      title: 'destino',
       type: 'reference',
-      to: [{ type: 'destination' }],
+      to: [{ type: 'destino' }],
     }),
     defineField({
       name: 'summary',

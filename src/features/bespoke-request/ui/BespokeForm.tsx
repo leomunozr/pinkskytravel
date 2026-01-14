@@ -16,8 +16,8 @@ type FormInputs = {
   // Step 1: Contact
   name: string;
   email: string;
-  // Step 2: Destination
-  destination: string;
+  // Step 2: destino
+  destino: string;
   // Step 3: Dates
   startDate: string;
   endDate: string;
@@ -50,7 +50,7 @@ const BespokeForm = () => {
   const nextStep = async () => {
     let isValid = false;
     if (currentStep === 0) isValid = await trigger(['name', 'email']);
-    if (currentStep === 1) isValid = await trigger('destination');
+    if (currentStep === 1) isValid = await trigger('destino');
     if (currentStep === 2) isValid = await trigger(['startDate', 'endDate']);
     if (currentStep === 3) isValid = await trigger('vibe');
     if (currentStep === 4) isValid = await trigger(['budget', 'travelers']);
@@ -117,7 +117,7 @@ const BespokeForm = () => {
             </Box>
           )}
 
-          {/* Step 2: Destination */}
+          {/* Step 2: destino */}
           {currentStep === 1 && (
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 'sm', mx: 'auto', width: '100%' }}>
               <Typography variant="h4" gutterBottom color="text.primary" fontWeight={700} align="center">
@@ -127,9 +127,9 @@ const BespokeForm = () => {
                 label="Destino o Región"
                 fullWidth
                 placeholder="Ej. Oaxaca, Chiapas, Playa del Carmen..."
-                error={!!errors.destination}
-                helperText={errors.destination?.message}
-                {...registerField("destination", { required: "Por favor indica un destino" })}
+                error={!!errors.destino}
+                helperText={errors.destino?.message}
+                {...registerField("destino", { required: "Por favor indica un destino" })}
               />
             </Box>
           )}
@@ -229,7 +229,7 @@ const BespokeForm = () => {
                     <Typography variant="body1" fontWeight={500}>{getValues('name')}</Typography>
 
                     <Typography variant="body2" color="text.secondary">Destino</Typography>
-                    <Typography variant="body1" fontWeight={500}>{getValues('destination')}</Typography>
+                    <Typography variant="body1" fontWeight={500}>{getValues('destino')}</Typography>
 
                     <Typography variant="body2" color="text.secondary">Fechas</Typography>
                     <Typography variant="body1" fontWeight={500}>{getValues('startDate')} al {getValues('endDate')}</Typography>

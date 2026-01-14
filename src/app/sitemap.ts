@@ -4,11 +4,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://pinkskytravel.mx' // Placeholder domain
 
   // Mock data for sitemap generation
-  const destinations = ['ciudad-de-mexico', 'oaxaca', 'yucatan', 'baja-california'];
+  const destinos = ['ciudad-de-mexico', 'oaxaca', 'yucatan', 'baja-california'];
   const tours = ['aventura-urbana', 'sabores-de-oaxaca'];
 
-  const destinationUrls = destinations.map((slug) => ({
-    url: `${baseUrl}/destinations/${slug}`,
+  const destinationUrls = destinos.map((slug) => ({
+    url: `${baseUrl}/destinos/${slug}`,
     lastModified: new Date(),
     changeFrequency: 'weekly' as const,
     priority: 0.8,
@@ -29,7 +29,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     {
-      url: `${baseUrl}/destinations`,
+      url: `${baseUrl}/destinos`,
       lastModified: new Date(),
       changeFrequency: 'monthly',
       priority: 0.8,

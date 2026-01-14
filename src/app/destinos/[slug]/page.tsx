@@ -43,7 +43,7 @@ const tours = [
     {
         title: "Aventura Urbana",
         slug: "aventura-urbana",
-        destination: "ciudad-de-mexico",
+        destino: "ciudad-de-mexico",
         image: "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&q=80",
         price: "$1,200 MXN",
         duration: "1 Día"
@@ -51,7 +51,7 @@ const tours = [
     {
         title: "Sabores de Oaxaca",
         slug: "sabores-de-oaxaca",
-        destination: "oaxaca",
+        destino: "oaxaca",
         image: "https://images.unsplash.com/photo-1569931726058-29472e39194e?auto=format&fit=crop&q=80",
         price: "$1,500 MXN",
         duration: "5 Horas"
@@ -60,20 +60,20 @@ const tours = [
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
-  const destination = destinations[slug as keyof typeof destinations];
-  if (!destination) return { title: 'Destino no encontrado' };
+  const destino = destinations[slug as keyof typeof destinations];
+  if (!destino) return { title: 'Destino no encontrado' };
 
   return {
-    title: `${destination.name} | Pink Sky Travel`,
-    description: destination.description,
+    title: `${destino.name} | Pink Sky Travel`,
+    description: destino.description,
   };
 }
 
 export default async function DestinationDetailPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const destination = destinations[slug as keyof typeof destinations];
+  const destino = destinations[slug as keyof typeof destinations];
 
-  if (!destination) {
+  if (!destino) {
     return (
       <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
         <Navbar />
@@ -85,7 +85,7 @@ export default async function DestinationDetailPage({ params }: { params: Promis
     );
   }
 
-  const destinationTours = tours.filter(t => t.destination === slug);
+  const destinationTours = tours.filter(t => t.destino === slug);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
@@ -95,7 +95,7 @@ export default async function DestinationDetailPage({ params }: { params: Promis
         <Box sx={{
             position: 'relative',
             height: '400px',
-            backgroundImage: `url(${destination.image})`,
+            backgroundImage: `url(${destino.image})`,
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             display: 'flex',
@@ -112,7 +112,7 @@ export default async function DestinationDetailPage({ params }: { params: Promis
         }}>
             <Container maxWidth="lg" sx={{ position: 'relative', zIndex: 1, pb: 6 }}>
                 <Typography variant="h2" component="h1" sx={{ color: 'white', fontWeight: 800 }}>
-                    {destination.name}
+                    {destino.name}
                 </Typography>
             </Container>
         </Box>
@@ -120,12 +120,12 @@ export default async function DestinationDetailPage({ params }: { params: Promis
         <Container maxWidth="lg" sx={{ py: 8 }}>
             <Grid container spacing={6}>
                 <Grid size={{ xs: 12, md: 8 }}>
-                    <Typography variant="h4" gutterBottom color="secondary.main">Sobre {destination.name}</Typography>
+                    <Typography variant="h4" gutterBottom color="secondary.main">Sobre {destino.name}</Typography>
                     <Typography variant="body1" paragraph>
-                        {destination.description}
+                        {destino.description}
                     </Typography>
                     <Typography variant="body1" paragraph>
-                        Descubre lo mejor de esta región con nuestros tours seleccionados. Desde la cultura local hasta la naturaleza impresionante, {destination.name} tiene algo para todos.
+                        Descubre lo mejor de esta región con nuestros tours seleccionados. Desde la cultura local hasta la naturaleza impresionante, {destino.name} tiene algo para todos.
                     </Typography>
 
                     <Typography variant="h5" gutterBottom sx={{ mt: 6 }} color="secondary.main">Tours Disponibles</Typography>
@@ -171,7 +171,7 @@ export default async function DestinationDetailPage({ params }: { params: Promis
                     <Box sx={{ bgcolor: 'background.paper', p: 4, borderRadius: 2, boxShadow: 1 }}>
                         <Typography variant="h6" gutterBottom color="secondary.main">Lo más destacado</Typography>
                         <Box component="ul" sx={{ pl: 2 }}>
-                            {destination.highlights.map((highlight, index) => (
+                            {destino.highlights.map((highlight, index) => (
                                 <li key={index}>
                                     <Typography variant="body1" sx={{ mb: 1 }}>{highlight}</Typography>
                                 </li>

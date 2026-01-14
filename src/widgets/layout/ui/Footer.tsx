@@ -24,7 +24,7 @@ const Footer = () => {
               Explora
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <Link href="/destinations" style={{ textDecoration: 'none' }}>
+              <Link href="/destinos" style={{ textDecoration: 'none' }}>
                 <Typography variant="body2" color="text.secondary" sx={{ '&:hover': { color: 'primary.main' } }}>
                   Destinos
                 </Typography>

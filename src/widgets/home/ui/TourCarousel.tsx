@@ -6,7 +6,6 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import LelePlaceholder from '../ui/LelePlaceholder';
 import { client } from '@/shared/api/sanity/client';
 import { TOURS_QUERY } from '@/shared/api/sanity/queries';
 
@@ -45,9 +44,6 @@ const TourCarousel = async () => {
                 Los destinos favoritos de nuestros viajeros este mes.
             </Typography>
           </Box>
-          <Box sx={{ display: { xs: 'none', md: 'block' } }}>
-             <LelePlaceholder sx={{ width: 150 }} message="Lele recomienda" />
-          </Box>
         </Box>
 
         <Grid container spacing={4}>
@@ -59,14 +55,19 @@ const TourCarousel = async () => {
                   flexDirection: 'column',
                   transition: 'all 0.3s ease',
                   cursor: 'pointer',
+                  overflow: 'hidden', // Add overflow hidden to clip the zoomed image
                   '&:hover': {
-                      transform: 'translateY(-4px)',
-                      boxShadow: '0 12px 24px rgba(0,0,0,0.08)'
+                      // Removed transform: 'translateY(-4px)'
+                      boxShadow: '0 12px 24px rgba(0,0,0,0.08)',
+                      '& .tour-image': { // Target the image for zoom
+                          transform: 'scale(1.1)',
+                      }
                   }
               }}>
                 {/* Image or Placeholder */}
                 {tour.imageUrl ? (
                   <Box
+                    className="tour-image" // Add class name for targeting
                     component="img"
                     src={tour.imageUrl}
                     alt={tour.title}
@@ -74,17 +75,24 @@ const TourCarousel = async () => {
                       height: 240,
                       width: '100%',
                       objectFit: 'cover',
+                      transition: 'transform 0.3s ease-in-out', // Smooth transition for transform
+                      transform: 'scale(1)', // Base scale
                     }}
                   />
                 ) : (
-                  <Box sx={{
+                  <Box
+                    className="tour-image" // Add class name for targeting
+                    sx={{
                       height: 240,
                       bgcolor: '#e0f7fa', // Default placeholder color
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
-                      position: 'relative'
-                  }}>
+                      position: 'relative',
+                      transition: 'transform 0.3s ease-in-out', // Smooth transition for transform
+                      transform: 'scale(1)', // Base scale
+                    }}
+                  >
                     <Typography variant="h6" sx={{ opacity: 0.5, fontWeight: 700 }}>
                       {tour.title}
                     </Typography>

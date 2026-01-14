@@ -40,7 +40,7 @@ const Navbar = () => {
             <Button
               color="secondary"
               component={Link}
-              href="/destinations"
+              href="/destinos"
               sx={{ fontWeight: 600 }}
             >
               Destinos

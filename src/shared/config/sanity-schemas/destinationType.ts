@@ -1,8 +1,8 @@
 import { defineField, defineType } from 'sanity'
 
 export const destinationType = defineType({
-  name: 'destination',
-  title: 'Destination',
+  name: 'destino',
+  title: 'Destinos',
   type: 'document',
   fields: [
     defineField({

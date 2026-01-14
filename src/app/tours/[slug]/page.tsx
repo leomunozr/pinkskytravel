@@ -21,7 +21,7 @@ const tours = {
   'aventura-urbana': {
     title: "Aventura Urbana",
     summary: "Explora los secretos mejor guardados de la Ciudad de México, desde mercados locales hasta arquitectura impresionante.",
-    destination: "Ciudad de México",
+    destino: "Ciudad de México",
     image: "https://images.unsplash.com/photo-1518105779142-d975f22f1b0a?auto=format&fit=crop&q=80",
     price: "$1,200 MXN",
     features: {
@@ -46,7 +46,7 @@ const tours = {
   'sabores-de-oaxaca': {
     title: "Sabores de Oaxaca",
     summary: "Un viaje culinario por los mercados y cocinas tradicionales de Oaxaca.",
-    destination: "Oaxaca",
+    destino: "Oaxaca",
     image: "https://images.unsplash.com/photo-1569931726058-29472e39194e?auto=format&fit=crop&q=80",
     price: "$1,500 MXN",
     features: {
@@ -124,7 +124,7 @@ export default async function TourDetailPage({ params }: { params: Promise<{ slu
         }}>
             <Container maxWidth="md" sx={{ position: 'relative', zIndex: 1 }}>
                 <Typography variant="overline" sx={{ letterSpacing: 2, fontWeight: 'bold', mb: 2, display: 'block' }}>
-                    {tour.destination.toUpperCase()}
+                    {tour.destino.toUpperCase()}
                 </Typography>
                 <Typography variant="h2" component="h1" fontWeight="800" gutterBottom>
                     {tour.title}

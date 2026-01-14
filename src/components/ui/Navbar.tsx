@@ -38,7 +38,15 @@ const Navbar = () => {
           </Typography>
           <Box sx={{ display: 'flex', gap: 2 }}>
             <Button
-              color="primary"
+              color="secondary"
+              component={Link}
+              href="/destinations"
+              sx={{ fontWeight: 600 }}
+            >
+              Destinos
+            </Button>
+            <Button
+              color="secondary"
               component={Link}
               href="/catalogo"
               sx={{ fontWeight: 600 }}
@@ -46,11 +54,11 @@ const Navbar = () => {
               Catálogo
             </Button>
             <Button
-              variant="outlined"
-              color="secondary"
+              variant="contained"
+              color="primary"
               component={Link}
               href="/bespoke"
-              sx={{ borderWidth: 2, '&:hover': { borderWidth: 2 } }}
+              sx={{ fontWeight: 600, color: 'white' }}
             >
               A Medida
             </Button>

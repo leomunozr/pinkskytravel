@@ -24,13 +24,18 @@ const Footer = () => {
               Explora
             </Typography>
             <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
-              <Link href="/catalogo" passHref legacyBehavior>
-                <Typography component="a" variant="body2" color="text.secondary" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
+              <Link href="/destinations" style={{ textDecoration: 'none' }}>
+                <Typography variant="body2" color="text.secondary" sx={{ '&:hover': { color: 'primary.main' } }}>
+                  Destinos
+                </Typography>
+              </Link>
+              <Link href="/catalogo" style={{ textDecoration: 'none' }}>
+                <Typography variant="body2" color="text.secondary" sx={{ '&:hover': { color: 'primary.main' } }}>
                   Catálogo
                 </Typography>
               </Link>
-              <Link href="/bespoke" passHref legacyBehavior>
-                <Typography component="a" variant="body2" color="text.secondary" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
+              <Link href="/bespoke" style={{ textDecoration: 'none' }}>
+                <Typography variant="body2" color="text.secondary" sx={{ '&:hover': { color: 'primary.main' } }}>
                   A Medida
                 </Typography>
               </Link>

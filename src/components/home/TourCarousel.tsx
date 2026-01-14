@@ -21,7 +21,17 @@ interface Tour {
 }
 
 const TourCarousel = async () => {
-  const tours = await client.fetch<Tour[]>(TOURS_QUERY);
+  let tours: Tour[] = [];
+  try {
+    tours = await client.fetch<Tour[]>(TOURS_QUERY);
+  } catch (error) {
+    console.error("Failed to fetch tours:", error);
+    tours = [
+       { _id: '1', title: 'Aventura Urbana', price: 1200, vibe: 'Cultural' },
+       { _id: '2', title: 'Sabores de Oaxaca', price: 1500, vibe: 'Gastronómico' },
+       { _id: '3', title: 'Cenotes Mágicos', price: 1800, vibe: 'Aventura' }
+    ];
+  }
 
   return (
     <Box component="section" sx={{ py: 12 }}>

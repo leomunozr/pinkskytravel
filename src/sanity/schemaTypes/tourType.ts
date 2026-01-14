@@ -12,6 +12,28 @@ export const tourType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'slug',
+      title: 'Slug',
+      type: 'slug',
+      options: {
+        source: 'title',
+        maxLength: 96,
+      },
+      validation: (rule) => rule.required(),
+    }),
+    defineField({
+      name: 'destination',
+      title: 'Destination',
+      type: 'reference',
+      to: [{ type: 'destination' }],
+    }),
+    defineField({
+      name: 'summary',
+      title: 'Summary',
+      type: 'text',
+      description: 'Catchy, benefit-driven description (e.g., "Explore Aztec Wonders & Flavors")',
+    }),
+    defineField({
       name: 'vibe',
       title: 'Vibe',
       type: 'string',
@@ -33,6 +55,53 @@ export const tourType = defineType({
       name: 'date',
       title: 'Date',
       type: 'date',
+    }),
+    defineField({
+        name: 'features',
+        title: 'Features',
+        type: 'object',
+        fields: [
+            defineField({name: 'duration', type: 'string', title: 'Duration'}),
+            defineField({name: 'groupSize', type: 'string', title: 'Group Size'}),
+            defineField({name: 'transportation', type: 'string', title: 'Transportation'}),
+            defineField({name: 'difficulty', type: 'string', title: 'Difficulty'}),
+        ]
+    }),
+    defineField({
+      name: 'itinerary',
+      title: 'Itinerary',
+      type: 'array',
+      of: [
+        {
+          type: 'object',
+          fields: [
+            defineField({name: 'day', type: 'string', title: 'Day/Time'}),
+            defineField({name: 'title', type: 'string', title: 'Title'}),
+            defineField({name: 'description', type: 'text', title: 'Description'}),
+          ]
+        }
+      ],
+    }),
+    defineField({
+      name: 'included',
+      title: 'What\'s Included',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
+      name: 'notIncluded',
+      title: 'What\'s Not Included',
+      type: 'array',
+      of: [{ type: 'string' }],
+    }),
+    defineField({
+      name: 'logistics',
+      title: 'Logistics',
+      type: 'object',
+      fields: [
+        defineField({name: 'meetingPoint', type: 'string', title: 'Meeting Point'}),
+        defineField({name: 'whatToBring', type: 'text', title: 'What to Bring'}),
+      ]
     }),
     defineField({
       name: 'gallery',

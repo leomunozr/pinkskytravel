@@ -9,15 +9,8 @@ import Link from 'next/link';
 import { client } from '@/shared/api/sanity/client';
 import { CATEGORIES_QUERY } from '@/shared/api/sanity/queries';
 
-interface Category {
-  _id: string;
-  name: string;
-  slug: { current: string };
-  emoji: string;
-}
-
 const Categorias = async () => {
-  const categories = await client.fetch<Category[]>(CATEGORIES_QUERY);
+  const categories = await client.fetch<Categoria[]>(CATEGORIES_QUERY);
 
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>

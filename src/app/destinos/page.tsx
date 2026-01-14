@@ -12,7 +12,7 @@ import Footer from '@/widgets/layout/ui/Footer';
 import { Metadata } from 'next';
 import { client } from '@/shared/api/sanity/client';
 import { FEATURED_DESTINATIONS_QUERY } from '@/shared/api/sanity/queries';
-import { Destination } from '@/shared/types/destination';
+import { Destino } from '@/shared/types/destino';
 
 export const metadata: Metadata = {
   title: 'Destinos | Pink Sky Travel',
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
 };
 
 export default async function DestinationsPage() {
-  const destinations = await client.fetch<Destination[]>(FEATURED_DESTINATIONS_QUERY);
+  const destinations = await client.fetch<Destino[]>(FEATURED_DESTINATIONS_QUERY);
 
   return (
     <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>

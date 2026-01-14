@@ -1,4 +1,4 @@
-export interface Destination {
+export interface Destino {
   _id: string;
   name: string;
   slug: { current: string };

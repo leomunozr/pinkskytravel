@@ -7,10 +7,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Link from '@mui/material/Link';
 import { client } from '@/shared/api/sanity/client';
 import { FEATURED_DESTINATIONS_QUERY } from '@/shared/api/sanity/queries';
-import { Destination } from '@/shared/types/destination';
+import { Destino } from '@/shared/types/destino';
 
 const Destacados = async () => {
-  const featuredDestinations = await client.fetch<Destination[]>(FEATURED_DESTINATIONS_QUERY);
+  const featuredDestinations = await client.fetch<Destino[]>(FEATURED_DESTINATIONS_QUERY);
 
   return (
     <Box sx={{ py: 8, bgcolor: 'background.default' }}>

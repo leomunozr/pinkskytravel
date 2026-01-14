@@ -24,17 +24,19 @@ const theme = createTheme({
   },
   palette: {
     primary: {
-      main: '#1A237E', // Midnight Blue
-      light: '#534bae',
-      dark: '#000051',
-    },
-    secondary: {
-      main: '#F06292', // Pink Dusk
+      main: '#F06292', // Pink Dusk - CTA/Accent (10%)
       light: '#ff94c2',
       dark: '#ba2d65',
+      contrastText: '#ffffff', // Ensure readability on pink buttons
+    },
+    secondary: {
+      main: '#1A237E', // Midnight Blue - Headers (30%)
+      light: '#534bae',
+      dark: '#000051',
+      contrastText: '#ffffff',
     },
     background: {
-      default: '#FAFAFA', // Softer than pure white
+      default: '#FAFAFA', // Off-white (60%)
       paper: '#FFFFFF',
     },
     text: {

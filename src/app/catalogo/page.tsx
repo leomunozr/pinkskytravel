@@ -5,9 +5,9 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
-import LelePlaceholder from '@/components/ui/LelePlaceholder';
+import Navbar from '@/widgets/layout/ui/Navbar';
+import Footer from '@/widgets/layout/ui/Footer';
+import LelePlaceholder from '@/shared/ui/LelePlaceholder';
 import Chip from '@mui/material/Chip';
 
 export default function CatalogoPage() {

@@ -12,8 +12,8 @@ import DirectionsCarIcon from '@mui/icons-material/DirectionsCar';
 import TerrainIcon from '@mui/icons-material/Terrain';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
+import Navbar from '@/widgets/layout/ui/Navbar';
+import Footer from '@/widgets/layout/ui/Footer';
 import { Metadata } from 'next';
 
 // Mock Data

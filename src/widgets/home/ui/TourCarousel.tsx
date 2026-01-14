@@ -7,8 +7,8 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import LelePlaceholder from '../ui/LelePlaceholder';
-import { client } from '@/sanity/lib/client';
-import { TOURS_QUERY } from '@/sanity/lib/queries';
+import { client } from '@/shared/api/sanity/client';
+import { TOURS_QUERY } from '@/shared/api/sanity/queries';
 
 // Define the interface for the Tour data
 interface Tour {

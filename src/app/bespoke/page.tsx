@@ -3,10 +3,10 @@ import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Paper from '@mui/material/Paper';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
-import BespokeForm from '@/components/bespoke/BespokeForm';
-import LelePlaceholder from '@/components/ui/LelePlaceholder';
+import Navbar from '@/widgets/layout/ui/Navbar';
+import Footer from '@/widgets/layout/ui/Footer';
+import BespokeForm from '@/features/bespoke-request/ui/BespokeForm';
+import LelePlaceholder from '@/shared/ui/LelePlaceholder';
 
 export default function BespokePage() {
   return (

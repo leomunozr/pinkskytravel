@@ -6,9 +6,9 @@ import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
-import LinkButton from '@/components/ui/LinkButton';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
+import LinkButton from '@/shared/ui/LinkButton';
+import Navbar from '@/widgets/layout/ui/Navbar';
+import Footer from '@/widgets/layout/ui/Footer';
 import { Metadata } from 'next';
 
 // Mock data

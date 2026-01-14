@@ -1,8 +1,8 @@
 import Box from '@mui/material/Box';
-import Navbar from '@/components/ui/Navbar';
-import Footer from '@/components/ui/Footer';
-import Hero from '@/components/home/Hero';
-import TourCarousel from '@/components/home/TourCarousel';
+import Navbar from '@/widgets/layout/ui/Navbar';
+import Footer from '@/widgets/layout/ui/Footer';
+import Hero from '@/widgets/home/ui/Hero';
+import TourCarousel from '@/widgets/home/ui/TourCarousel';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
@@ -11,7 +11,7 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Link from 'next/link';
-import LinkButton from '@/components/ui/LinkButton';
+import LinkButton from '@/shared/ui/LinkButton';
 
 const featuredDestinations = [
   {

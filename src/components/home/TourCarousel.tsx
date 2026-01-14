@@ -7,15 +7,22 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import LelePlaceholder from '../ui/LelePlaceholder';
+import { client } from '@/sanity/lib/client';
+import { TOURS_QUERY } from '@/sanity/lib/queries';
 
-// This would eventually come from Sanity
-const MOCK_TOURS = [
-  { id: 1, title: 'Ruta del Tequila', price: 1200, color: '#ffcc80' },
-  { id: 2, title: 'Escapada a Holbox', price: 3500, color: '#bbdefb' },
-  { id: 3, title: 'Selva Lacandona', price: 2800, color: '#c8e6c9' },
-];
+// Define the interface for the Tour data
+interface Tour {
+  _id: string;
+  title: string;
+  price: number;
+  imageUrl?: string;
+  vibe?: string;
+  slug?: { current: string };
+}
 
-const TourCarousel = () => {
+const TourCarousel = async () => {
+  const tours = await client.fetch<Tour[]>(TOURS_QUERY);
+
   return (
     <Box component="section" sx={{ py: 12 }}>
       <Container maxWidth="lg">
@@ -34,8 +41,8 @@ const TourCarousel = () => {
         </Box>
 
         <Grid container spacing={4}>
-          {MOCK_TOURS.map((tour) => (
-            <Grid size={{ xs: 12, md: 4 }} key={tour.id}>
+          {tours.map((tour) => (
+            <Grid size={{ xs: 12, md: 4 }} key={tour._id}>
               <Card sx={{
                   height: '100%',
                   display: 'flex',
@@ -47,19 +54,32 @@ const TourCarousel = () => {
                       boxShadow: '0 12px 24px rgba(0,0,0,0.08)'
                   }
               }}>
-                {/* Image Placeholder */}
-                <Box sx={{
-                    height: 240,
-                    bgcolor: tour.color,
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    position: 'relative'
-                }}>
-                  <Typography variant="h6" sx={{ opacity: 0.5, fontWeight: 700 }}>
-                    Foto Tour {tour.id}
-                  </Typography>
-                </Box>
+                {/* Image or Placeholder */}
+                {tour.imageUrl ? (
+                  <Box
+                    component="img"
+                    src={tour.imageUrl}
+                    alt={tour.title}
+                    sx={{
+                      height: 240,
+                      width: '100%',
+                      objectFit: 'cover',
+                    }}
+                  />
+                ) : (
+                  <Box sx={{
+                      height: 240,
+                      bgcolor: '#e0f7fa', // Default placeholder color
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      position: 'relative'
+                  }}>
+                    <Typography variant="h6" sx={{ opacity: 0.5, fontWeight: 700 }}>
+                      {tour.title}
+                    </Typography>
+                  </Box>
+                )}
 
                 <CardContent sx={{ flexGrow: 1, p: 3, pt: 3 }}>
                   <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 2 }}>
@@ -72,7 +92,8 @@ const TourCarousel = () => {
                   </Box>
 
                   <Typography variant="body2" color="text.secondary" sx={{ mb: 3 }}>
-                      4 días / 3 noches
+                      {/* Vibe or static text */}
+                      {tour.vibe ? `Vibe: ${tour.vibe}` : '4 días / 3 noches'}
                   </Typography>
 
                   <Button

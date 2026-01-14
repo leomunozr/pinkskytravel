@@ -1,27 +1,7 @@
-@import "tailwindcss";
-
-@theme {
-  --color-pink-dusk: #F06292;
-  --color-midnight-blue: #1A237E;
-
-  --font-sans: "Arial", sans-serif;
-  --font-mono: "Courier New", monospace;
-}
-
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
-}
+/* Global Styles */
+/* Material UI handles resets via CssBaseline */
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: var(--font-sans);
+  margin: 0;
+  padding: 0;
 }

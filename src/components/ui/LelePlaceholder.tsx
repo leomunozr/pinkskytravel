@@ -1,21 +1,53 @@
 import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import { SxProps, Theme } from '@mui/material/styles';
 
 interface LelePlaceholderProps {
-  className?: string;
+  sx?: SxProps<Theme>;
   message?: string;
+  className?: string; // Kept for compatibility if passed, but prefer sx
 }
 
-const LelePlaceholder: React.FC<LelePlaceholderProps> = ({ className = '', message }) => {
+const LelePlaceholder: React.FC<LelePlaceholderProps> = ({ sx, message }) => {
   return (
-    <div className={`flex flex-col items-center justify-center p-4 border-2 border-dashed border-pink-dusk rounded-lg bg-pink-50 ${className}`}>
-      <div className="w-24 h-24 mb-2 bg-pink-200 rounded-full flex items-center justify-center">
-        <span className="text-3xl" role="img" aria-label="Lele Mascot">🎎</span>
-      </div>
-      <p className="text-midnight-blue font-bold text-center">
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        p: 2,
+        border: '2px dashed',
+        borderColor: 'secondary.main',
+        borderRadius: 2,
+        bgcolor: '#fce4ec', // pink[50] roughly
+        ...sx,
+      }}
+    >
+      <Box
+        sx={{
+          width: 96,
+          height: 96,
+          mb: 1,
+          bgcolor: '#f48fb1', // pink[200]
+          borderRadius: '50%',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+        }}
+      >
+        <Typography variant="h3" component="span" role="img" aria-label="Lele Mascot">
+          🎎
+        </Typography>
+      </Box>
+      <Typography variant="subtitle1" fontWeight="bold" color="primary.main" align="center">
         {message || "Aquí va Lele"}
-      </p>
-      <span className="text-xs text-gray-500 text-center">(Espacio reservado para SVG)</span>
-    </div>
+      </Typography>
+      <Typography variant="caption" color="text.secondary" align="center">
+        (Espacio reservado para SVG)
+      </Typography>
+    </Box>
   );
 };
 

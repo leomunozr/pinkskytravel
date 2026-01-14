@@ -1,22 +1,34 @@
+'use client';
+import React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+import Box from '@mui/material/Box';
 import Link from 'next/link';
 
 const Navbar = () => {
   return (
-    <nav className="bg-midnight-blue text-white p-4">
-      <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-pink-dusk">
+    <AppBar position="static">
+      <Toolbar>
+        <Typography
+          variant="h5"
+          component={Link}
+          href="/"
+          sx={{ flexGrow: 1, textDecoration: 'none', color: 'secondary.main', fontWeight: 'bold' }}
+        >
           Pink Sky Travel
-        </Link>
-        <div className="space-x-4">
-          <Link href="/catalogo" className="hover:text-pink-dusk transition-colors">
+        </Typography>
+        <Box>
+          <Button color="inherit" component={Link} href="/catalogo">
             Catálogo
-          </Link>
-          <Link href="/bespoke" className="hover:text-pink-dusk transition-colors">
+          </Button>
+          <Button color="inherit" component={Link} href="/bespoke">
             A Medida
-          </Link>
-        </div>
-      </div>
-    </nav>
+          </Button>
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 };
 

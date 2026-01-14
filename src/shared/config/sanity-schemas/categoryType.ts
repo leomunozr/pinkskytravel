@@ -7,7 +7,7 @@ export const categoryType = defineType({
   fields: [
     defineField({
       name: 'name',
-      title: 'Name',
+      title: 'Nombre',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
@@ -22,10 +22,12 @@ export const categoryType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
-      name: 'emoji',
-      title: 'Emoji',
-      type: 'string',
-      description: 'A single emoji to represent this category (e.g., 🌮)',
+      name: 'image',
+      title: 'Main Image',
+      type: 'image',
+      options: {
+        hotspot: true,
+      },
     }),
   ],
 })

@@ -4,34 +4,29 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
-import LinkButton from '@/shared/ui/LinkButton';
+import Link from '@mui/material/Link';
 import { client } from '@/shared/api/sanity/client';
 import { FEATURED_DESTINATIONS_QUERY } from '@/shared/api/sanity/queries';
 import { Destination } from '@/shared/types/destination';
 
 const Destacados = async () => {
   const featuredDestinations = await client.fetch<Destination[]>(FEATURED_DESTINATIONS_QUERY);
-  
+
   return (
     <Box sx={{ py: 8, bgcolor: 'background.default' }}>
       <Container maxWidth="lg">
         <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mb: 4 }}>
-          <Typography variant="h3" component="h2" color="secondary.main" fontWeight="bold">
-            Destinos Destacados
-          </Typography>
-          <LinkButton href="destinos" color="primary" sx={{ fontWeight: 'bold' }}>
-            Ver todos
-          </LinkButton>
+          <Link href="destinos" underline='none'>
+            <Typography variant="h3" component="h2" color="secondary.main" fontWeight="bold">
+              Destinos Destacados
+            </Typography>
+          </Link>
         </Box>
 
         <Grid container spacing={4}>
           {featuredDestinations.map((dest) => (
             <Grid size={{ xs: 12, md: 4 }} key={dest._id}>
-              <LinkButton
-                href={`/destinos/${dest.slug.current}`}
-                variant="text"
-                sx={{ color: 'white', p: 0, mt: 1, '&:hover': { textDecoration: 'underline' } }}
-              >
+              <Link href={`/destinos/${dest.slug.current}`}>
                 <Card sx={{
                   height: '100%',
                   position: 'relative',
@@ -69,7 +64,7 @@ const Destacados = async () => {
                     </Typography>
                   </Box>
                 </Card>
-              </LinkButton>
+              </Link>
             </Grid>
           ))}
         </Grid>

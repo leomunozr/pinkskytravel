@@ -15,7 +15,7 @@ export const CATEGORIES_QUERY = groq`*[_type == "categoria"] {
   _id,
   name,
   slug,
-  emoji
+  "imageUrl": image.asset->url
 }`
 
 export const FEATURED_DESTINATIONS_QUERY = groq`*[_type == "destino"][0...3] {

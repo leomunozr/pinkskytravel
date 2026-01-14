@@ -1,15 +1,20 @@
 import React from 'react';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
 
 const Footer = () => {
   return (
-    <footer className="bg-midnight-blue text-white py-8 mt-12">
-      <div className="container mx-auto text-center">
-        <p>&copy; {new Date().getFullYear()} Pink Sky Travel. Todos los derechos reservados.</p>
-        <div className="mt-4">
-          <p className="text-sm text-gray-400">Hecho con ❤️ en México</p>
-        </div>
-      </div>
-    </footer>
+    <Box component="footer" sx={{ bgcolor: 'primary.main', color: 'white', py: 6, mt: 'auto' }}>
+      <Container maxWidth="lg">
+        <Typography variant="body1" align="center">
+          &copy; {new Date().getFullYear()} Pink Sky Travel. Todos los derechos reservados.
+        </Typography>
+        <Typography variant="body2" align="center" sx={{ color: 'rgba(255, 255, 255, 0.7)', mt: 1 }}>
+          Hecho con ❤️ en México
+        </Typography>
+      </Container>
+    </Box>
   );
 };
 

@@ -1,45 +1,73 @@
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Button from '@mui/material/Button';
 import Navbar from '@/components/ui/Navbar';
 import Footer from '@/components/ui/Footer';
 import LelePlaceholder from '@/components/ui/LelePlaceholder';
+import Chip from '@mui/material/Chip';
 
 export default function CatalogoPage() {
   return (
-    <div className="flex flex-col min-h-screen">
+    <Box sx={{ display: 'flex', flexDirection: 'column', minHeight: '100vh' }}>
       <Navbar />
-      <main className="flex-grow container mx-auto px-4 py-8">
-        <div className="flex justify-between items-end mb-8">
-            <div>
-                <h1 className="text-4xl font-bold text-midnight-blue mb-2">Catálogo de Experiencias</h1>
-                <p className="text-gray-600">Encuentra tu próxima aventura en México.</p>
-            </div>
-            <LelePlaceholder className="w-24 h-24 hidden md:flex" message="Tips de Lele" />
-        </div>
+      <Box component="main" sx={{ flexGrow: 1, py: 4 }}>
+        <Container maxWidth="lg">
+          <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', mb: 4 }}>
+            <Box>
+                <Typography variant="h3" component="h1" fontWeight="bold" color="primary.main" gutterBottom>
+                    Catálogo de Experiencias
+                </Typography>
+                <Typography variant="subtitle1" color="text.secondary">
+                    Encuentra tu próxima aventura en México.
+                </Typography>
+            </Box>
+            <Box sx={{ display: { xs: 'none', md: 'block' } }}>
+                <LelePlaceholder sx={{ width: 100, height: 100 }} message="Tips de Lele" />
+            </Box>
+          </Box>
 
-        {/* Placeholder Grid for Tours */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[1, 2, 3, 4, 5, 6].map((i) => (
-                <div key={i} className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-100">
-                    <div className="h-48 bg-gray-200 flex items-center justify-center">
-                        <span className="text-gray-400">Imagen Tour {i}</span>
-                    </div>
-                    <div className="p-4">
-                        <div className="flex justify-between items-start mb-2">
-                            <h3 className="font-bold text-lg text-midnight-blue">Tour Ejemplo {i}</h3>
-                            <span className="bg-pink-100 text-pink-dusk text-xs px-2 py-1 rounded-full font-bold">Vibe</span>
-                        </div>
-                        <p className="text-sm text-gray-500 mb-4 line-clamp-2">
-                            Descripción corta del tour que vendrá desde Sanity. Una experiencia inolvidable.
-                        </p>
-                        <div className="flex justify-between items-center mt-4">
-                            <span className="font-bold text-pink-dusk">$2,500 MXN</span>
-                            <button className="text-sm text-midnight-blue underline hover:text-pink-dusk">Ver más</button>
-                        </div>
-                    </div>
-                </div>
-            ))}
-        </div>
-      </main>
+          <Grid container spacing={4}>
+              {[1, 2, 3, 4, 5, 6].map((i) => (
+                  <Grid size={{ xs: 12, md: 6, lg: 4 }} key={i}>
+                    <Card sx={{ height: '100%', display: 'flex', flexDirection: 'column' }}>
+                        <Box sx={{ height: 200, bgcolor: 'grey.300', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                            <Typography color="text.secondary">Imagen Tour {i}</Typography>
+                        </Box>
+                        <CardContent sx={{ flexGrow: 1 }}>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', mb: 1 }}>
+                                <Typography variant="h6" fontWeight="bold" color="primary.main">
+                                    Tour Ejemplo {i}
+                                </Typography>
+                                <Chip label="Vibe" color="secondary" size="small" variant="outlined" />
+                            </Box>
+                            <Typography variant="body2" color="text.secondary" paragraph sx={{
+                                display: '-webkit-box',
+                                overflow: 'hidden',
+                                WebkitBoxOrient: 'vertical',
+                                WebkitLineClamp: 2,
+                            }}>
+                                Descripción corta del tour que vendrá desde Sanity. Una experiencia inolvidable.
+                            </Typography>
+                            <Box sx={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', mt: 2 }}>
+                                <Typography variant="h6" fontWeight="bold" color="secondary.main">
+                                    $2,500 MXN
+                                </Typography>
+                                <Button color="primary" sx={{ textDecoration: 'underline' }}>
+                                    Ver más
+                                </Button>
+                            </Box>
+                        </CardContent>
+                    </Card>
+                  </Grid>
+              ))}
+          </Grid>
+        </Container>
+      </Box>
       <Footer />
-    </div>
+    </Box>
   );
 }

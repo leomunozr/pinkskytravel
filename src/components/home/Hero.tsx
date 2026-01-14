@@ -1,4 +1,10 @@
+'use client';
 import React from 'react';
+import Box from '@mui/material/Box';
+import Typography from '@mui/material/Typography';
+import Container from '@mui/material/Container';
+import Grid from '@mui/material/Grid';
+import Paper from '@mui/material/Paper';
 import Link from 'next/link';
 
 const categories = [
@@ -10,37 +16,73 @@ const categories = [
 
 const Hero = () => {
   return (
-    <section className="relative w-full">
+    <Box component="section" sx={{ position: 'relative', width: '100%' }}>
       {/* Video Background Placeholder */}
-      <div className="w-full h-[60vh] bg-gray-300 flex items-center justify-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/40 z-10"></div>
-        <p className="z-20 text-white text-xl font-bold">[ Video Hero Placeholder ]</p>
-        <div className="absolute inset-0 flex flex-col items-center justify-center z-20 text-center px-4">
-          <h1 className="text-4xl md:text-6xl font-bold text-white mb-4 drop-shadow-md">
-            Descubre el México <span className="text-pink-dusk">Real</span>
-          </h1>
-          <p className="text-xl text-white mb-8 max-w-2xl drop-shadow-md">
+      <Box sx={{
+        width: '100%',
+        height: '60vh',
+        bgcolor: 'grey.300',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <Box sx={{ position: 'absolute', inset: 0, bgcolor: 'rgba(0,0,0,0.4)', zIndex: 1 }} />
+        <Typography variant="h6" sx={{ zIndex: 2, color: 'white', fontWeight: 'bold' }}>
+          [ Video Hero Placeholder ]
+        </Typography>
+        <Box sx={{
+          position: 'absolute',
+          inset: 0,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          justifyContent: 'center',
+          zIndex: 2,
+          textAlign: 'center',
+          px: 2
+        }}>
+          <Typography variant="h2" component="h1" sx={{ color: 'white', fontWeight: 'bold', mb: 2, textShadow: '0px 2px 4px rgba(0,0,0,0.5)' }}>
+            Descubre el México <Box component="span" sx={{ color: 'secondary.main' }}>Real</Box>
+          </Typography>
+          <Typography variant="h5" sx={{ color: 'white', mb: 4, maxWidth: 600, textShadow: '0px 2px 4px rgba(0,0,0,0.5)' }}>
             Experiencias auténticas diseñadas para ti.
-          </p>
-        </div>
-      </div>
+          </Typography>
+        </Box>
+      </Box>
 
       {/* Categories */}
-      <div className="container mx-auto px-4 -mt-16 relative z-30">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+      <Container maxWidth="lg" sx={{ mt: -8, position: 'relative', zIndex: 3 }}>
+        <Grid container spacing={2}>
           {categories.map((cat) => (
-            <Link
-              key={cat.slug}
-              href={`/catalogo?categoria=${cat.slug}`}
-              className="bg-white rounded-xl shadow-lg p-6 flex flex-col items-center justify-center hover:scale-105 transition-transform cursor-pointer"
-            >
-              <span className="text-4xl mb-2">{cat.emoji}</span>
-              <span className="font-semibold text-midnight-blue text-center">{cat.name}</span>
-            </Link>
+            <Grid size={{ xs: 6, md: 3 }} key={cat.slug}>
+              <Paper
+                component={Link}
+                href={`/catalogo?categoria=${cat.slug}`}
+                elevation={3}
+                sx={{
+                  p: 3,
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  textDecoration: 'none',
+                  transition: 'transform 0.2s',
+                  '&:hover': { transform: 'scale(1.05)' },
+                  height: '100%'
+                }}
+              >
+                <Typography variant="h3" sx={{ mb: 1 }}>{cat.emoji}</Typography>
+                <Typography variant="subtitle1" fontWeight="bold" color="primary.main" align="center">
+                  {cat.name}
+                </Typography>
+              </Paper>
+            </Grid>
           ))}
-        </div>
-      </div>
-    </section>
+        </Grid>
+      </Container>
+    </Box>
   );
 };
 

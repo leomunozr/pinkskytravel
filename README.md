@@ -12,8 +12,8 @@ This is a Next.js 14+ project for Pink Sky Travel agency. It uses Sanity.io as a
 2.  **Environment Variables:**
     Create a `.env.local` file in the root directory and add your Sanity credentials:
     ```bash
-    NEXT_PUBLIC_SANITY_PROJECT_ID="tu_project_id"
-    NEXT_PUBLIC_SANITY_DATASET="production"
+    SANITY_PROJECT_ID="tu_project_id"
+    SANITY_DATASET="production"
     ```
 
 3.  **Run Development Server:**
@@ -39,8 +39,8 @@ This project is configured for easy deployment on Netlify.
 3.  **Environment Variables (Critical):**
     In the Netlify Dashboard, go to **Site configuration > Environment variables** and add the following:
 
-    *   `NEXT_PUBLIC_SANITY_PROJECT_ID`: Your Sanity Project ID.
-    *   `NEXT_PUBLIC_SANITY_DATASET`: Your Dataset name (usually `production`).
+    *   `SANITY_PROJECT_ID`: Your Sanity Project ID.
+    *   `SANITY_DATASET`: Your Dataset name (usually `production`).
 
     *Without these variables, the site will not be able to fetch content from the CMS.*
 

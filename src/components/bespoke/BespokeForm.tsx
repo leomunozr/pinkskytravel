@@ -71,26 +71,34 @@ const BespokeForm = () => {
   };
 
   return (
-    <Paper elevation={3} sx={{ p: 4, maxWidth: 'sm', mx: 'auto' }}>
-      <Stepper activeStep={currentStep} alternativeLabel sx={{ mb: 4 }}>
-        {steps.map((label) => (
-          <Step key={label}>
-            <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
+    <Paper elevation={0} sx={{ p: { xs: 3, md: 6 }, maxWidth: 'md', mx: 'auto', border: '1px solid', borderColor: 'divider' }}>
+      <Box sx={{ width: '100%', mb: 6 }}>
+        <Stepper activeStep={currentStep} alternativeLabel sx={{
+            '& .MuiStepConnector-line': { borderColor: 'divider' },
+            '& .MuiStepIcon-root': { color: 'grey.300' },
+            '& .MuiStepIcon-root.Mui-active': { color: 'secondary.main' },
+            '& .MuiStepIcon-root.Mui-completed': { color: 'primary.main' },
+        }}>
+            {steps.map((label) => (
+            <Step key={label}>
+                <StepLabel>{label}</StepLabel>
+            </Step>
+            ))}
+        </Stepper>
+      </Box>
 
       <form onSubmit={handleSubmit(onSubmit)}>
-        <Box sx={{ minHeight: 300 }}>
+        <Box sx={{ minHeight: 320, display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           {/* Step 1: Contact */}
           {currentStep === 0 && (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="h5" gutterBottom color="primary.main" fontWeight="bold">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 'sm', mx: 'auto', width: '100%' }}>
+              <Typography variant="h4" gutterBottom color="text.primary" fontWeight={700} align="center">
                 ¡Hola! Empecemos por conocerte.
               </Typography>
               <TextField
                 label="Nombre Completo"
                 fullWidth
+                variant="outlined"
                 error={!!errors.name}
                 helperText={errors.name?.message}
                 {...registerField("name", { required: "El nombre es obligatorio" })}
@@ -98,6 +106,7 @@ const BespokeForm = () => {
               <TextField
                 label="Email"
                 fullWidth
+                variant="outlined"
                 error={!!errors.email}
                 helperText={errors.email?.message}
                 {...registerField("email", {
@@ -110,8 +119,8 @@ const BespokeForm = () => {
 
           {/* Step 2: Destination */}
           {currentStep === 1 && (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="h5" gutterBottom color="primary.main" fontWeight="bold">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 'sm', mx: 'auto', width: '100%' }}>
+              <Typography variant="h4" gutterBottom color="text.primary" fontWeight={700} align="center">
                 ¿A dónde sueñas ir?
               </Typography>
               <TextField
@@ -127,11 +136,11 @@ const BespokeForm = () => {
 
           {/* Step 3: Dates */}
           {currentStep === 2 && (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="h5" gutterBottom color="primary.main" fontWeight="bold">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 'sm', mx: 'auto', width: '100%' }}>
+              <Typography variant="h4" gutterBottom color="text.primary" fontWeight={700} align="center">
                 ¿Cuándo te gustaría viajar?
               </Typography>
-              <Box sx={{ display: 'flex', gap: 2 }}>
+              <Box sx={{ display: 'flex', gap: 3 }}>
                 <TextField
                   label="Fecha Inicio (Aprox)"
                   type="date"
@@ -156,8 +165,8 @@ const BespokeForm = () => {
 
           {/* Step 4: Interests */}
           {currentStep === 3 && (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="h5" gutterBottom color="primary.main" fontWeight="bold">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 'sm', mx: 'auto', width: '100%' }}>
+              <Typography variant="h4" gutterBottom color="text.primary" fontWeight={700} align="center">
                 ¿Qué vibe buscas?
               </Typography>
               <TextField
@@ -180,8 +189,8 @@ const BespokeForm = () => {
 
           {/* Step 5: Budget/Pax */}
           {currentStep === 4 && (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="h5" gutterBottom color="primary.main" fontWeight="bold">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 'sm', mx: 'auto', width: '100%' }}>
+              <Typography variant="h4" gutterBottom color="text.primary" fontWeight={700} align="center">
                 Últimos detalles
               </Typography>
               <TextField
@@ -210,18 +219,26 @@ const BespokeForm = () => {
 
           {/* Step 6: Review */}
           {currentStep === 5 && (
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
-              <Typography variant="h5" gutterBottom color="primary.main" fontWeight="bold">
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 3, maxWidth: 'sm', mx: 'auto', width: '100%' }}>
+              <Typography variant="h4" gutterBottom color="text.primary" fontWeight={700} align="center">
                 ¿Todo listo?
               </Typography>
-              <Paper variant="outlined" sx={{ p: 2, bgcolor: 'grey.50' }}>
-                <Typography variant="body2"><strong>Nombre:</strong> {getValues('name')}</Typography>
-                <Typography variant="body2"><strong>Destino:</strong> {getValues('destination')}</Typography>
-                <Typography variant="body2"><strong>Fechas:</strong> {getValues('startDate')} al {getValues('endDate')}</Typography>
-                <Typography variant="body2"><strong>Estilo:</strong> {getValues('vibe')}</Typography>
-                <Typography variant="body2"><strong>Viajeros:</strong> {getValues('travelers')}</Typography>
+              <Paper variant="outlined" sx={{ p: 3, bgcolor: 'background.default', borderRadius: 2 }}>
+                <Box sx={{ display: 'grid', gridTemplateColumns: { xs: '1fr', sm: '1fr 1fr' }, gap: 2 }}>
+                    <Typography variant="body2" color="text.secondary">Nombre</Typography>
+                    <Typography variant="body1" fontWeight={500}>{getValues('name')}</Typography>
+
+                    <Typography variant="body2" color="text.secondary">Destino</Typography>
+                    <Typography variant="body1" fontWeight={500}>{getValues('destination')}</Typography>
+
+                    <Typography variant="body2" color="text.secondary">Fechas</Typography>
+                    <Typography variant="body1" fontWeight={500}>{getValues('startDate')} al {getValues('endDate')}</Typography>
+
+                    <Typography variant="body2" color="text.secondary">Estilo</Typography>
+                    <Typography variant="body1" fontWeight={500}>{getValues('vibe')}</Typography>
+                </Box>
               </Paper>
-              <Typography variant="caption" color="text.secondary">
+              <Typography variant="caption" color="text.secondary" align="center">
                 Al enviar, nuestros agentes diseñarán una propuesta única para ti.
               </Typography>
             </Box>
@@ -229,11 +246,12 @@ const BespokeForm = () => {
         </Box>
 
         {/* Navigation Buttons */}
-        <Box sx={{ display: 'flex', justifyContent: 'space-between', mt: 4, pt: 2, borderTop: 1, borderColor: 'divider' }}>
+        <Box sx={{ display: 'flex', justifyContent: 'center', gap: 2, mt: 6 }}>
           <Button
             disabled={currentStep === 0}
             onClick={prevStep}
-            variant="outlined"
+            variant="text"
+            color="inherit"
           >
             Atrás
           </Button>
@@ -242,7 +260,9 @@ const BespokeForm = () => {
             <Button
               variant="contained"
               onClick={nextStep}
-              color="secondary"
+              color="primary"
+              disableElevation
+              sx={{ px: 4, py: 1.5 }}
             >
               Siguiente
             </Button>
@@ -250,8 +270,9 @@ const BespokeForm = () => {
             <Button
               type="submit"
               variant="contained"
-              color="primary"
-              size="large"
+              color="secondary"
+              disableElevation
+              sx={{ px: 4, py: 1.5, fontWeight: 700 }}
             >
               Enviar Solicitud
             </Button>

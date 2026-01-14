@@ -2,17 +2,64 @@ import React from 'react';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Typography from '@mui/material/Typography';
+import Link from 'next/link';
+import Grid from '@mui/material/Grid';
 
 const Footer = () => {
   return (
-    <Box component="footer" sx={{ bgcolor: 'primary.main', color: 'white', py: 6, mt: 'auto' }}>
+    <Box component="footer" sx={{ bgcolor: 'white', color: 'text.primary', py: 8, mt: 'auto', borderTop: '1px solid', borderColor: 'divider' }}>
       <Container maxWidth="lg">
-        <Typography variant="body1" align="center">
-          &copy; {new Date().getFullYear()} Pink Sky Travel. Todos los derechos reservados.
-        </Typography>
-        <Typography variant="body2" align="center" sx={{ color: 'rgba(255, 255, 255, 0.7)', mt: 1 }}>
-          Hecho con ❤️ en México
-        </Typography>
+        <Grid container spacing={4} justifyContent="space-between">
+          <Grid size={{ xs: 12, md: 4 }}>
+            <Typography variant="h6" fontWeight="bold" gutterBottom color="secondary.main">
+              Pink Sky Travel
+            </Typography>
+            <Typography variant="body2" color="text.secondary">
+              Diseñamos experiencias de viaje auténticas en México, conectándote con la cultura, la naturaleza y la gente.
+            </Typography>
+          </Grid>
+
+          <Grid size={{ xs: 6, md: 2 }}>
+            <Typography variant="subtitle2" fontWeight="bold" gutterBottom>
+              Explora
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <Link href="/catalogo" passHref legacyBehavior>
+                <Typography component="a" variant="body2" color="text.secondary" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
+                  Catálogo
+                </Typography>
+              </Link>
+              <Link href="/bespoke" passHref legacyBehavior>
+                <Typography component="a" variant="body2" color="text.secondary" sx={{ textDecoration: 'none', '&:hover': { color: 'primary.main' } }}>
+                  A Medida
+                </Typography>
+              </Link>
+            </Box>
+          </Grid>
+
+          <Grid size={{ xs: 6, md: 2 }}>
+            <Typography variant="subtitle2" fontWeight="bold" gutterBottom>
+              Legal
+            </Typography>
+            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1 }}>
+              <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { color: 'primary.main' } }}>
+                Términos
+              </Typography>
+              <Typography variant="body2" color="text.secondary" sx={{ cursor: 'pointer', '&:hover': { color: 'primary.main' } }}>
+                Privacidad
+              </Typography>
+            </Box>
+          </Grid>
+        </Grid>
+
+        <Box sx={{ mt: 8, pt: 4, borderTop: '1px solid', borderColor: 'divider', display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap' }}>
+            <Typography variant="caption" color="text.secondary">
+            &copy; {new Date().getFullYear()} Pink Sky Travel.
+            </Typography>
+            <Typography variant="caption" color="text.secondary">
+            Hecho con ❤️ en México
+            </Typography>
+        </Box>
       </Container>
     </Box>
   );

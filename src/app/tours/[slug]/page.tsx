@@ -55,7 +55,7 @@ export default async function ToursPage({
   }
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh", border: "solid 1px red" }}>
       <Navbar />
       <Box component="main" sx={{ flexGrow: 1 }}>
         {/* Hero Section */}
@@ -87,10 +87,11 @@ export default async function ToursPage({
                     {tour?.destino?.toUpperCase()}
                 </Typography> */}
             <Typography
-              variant="h2"
-              component="h1"
-              fontWeight="800"
               gutterBottom
+              component="h1"
+              variant="h2"
+              fontWeight="800"
+              sx={{ overflowWrap: "break-word" }}
             >
               {tour.title}
             </Typography>

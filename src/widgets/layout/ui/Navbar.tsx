@@ -90,7 +90,7 @@ const Navbar = () => {
               }}
             >
               <MenuItem
-                href="#tours"
+                href="/#tours"
                 component={Link}
                 onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleScrollMobile(e)}
               >
@@ -135,7 +135,7 @@ const Navbar = () => {
             <Button
               color="secondary"
               component={Link}
-              href="#tours"
+              href="/#tours"
               onClick={handleScroll}
               sx={{ fontWeight: 600 }}
             >

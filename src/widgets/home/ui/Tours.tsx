@@ -4,7 +4,6 @@ import Typography from '@mui/material/Typography';
 import Grid from '@mui/material/Grid';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
-import Button from '@mui/material/Button';
 import { client } from '@/shared/api/sanity/client';
 import { TOURS_QUERY } from '@/shared/api/sanity/queries';
 import { Tour } from '@/shared/types/tour';

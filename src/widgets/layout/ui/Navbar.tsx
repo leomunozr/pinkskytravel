@@ -7,11 +7,14 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Link from 'next/link';
+import { useScrollTo } from '@/shared/lib/useScrollTo';
 
 const Navbar = () => {
+  const { handleScroll } = useScrollTo();
+
   return (
     <AppBar
-      position="static"
+      position="sticky"
       color="transparent"
       elevation={0}
       sx={{
@@ -40,10 +43,11 @@ const Navbar = () => {
             <Button
               color="secondary"
               component={Link}
-              href="/destinos"
+              href="/#tours"
+              onClick={handleScroll}
               sx={{ fontWeight: 600 }}
             >
-              Destinos
+              Próximos Tours
             </Button>
             <Button
               color="secondary"

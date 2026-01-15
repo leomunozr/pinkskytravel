@@ -1,6 +1,10 @@
 /* Global Styles */
 /* Material UI handles resets via CssBaseline */
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;

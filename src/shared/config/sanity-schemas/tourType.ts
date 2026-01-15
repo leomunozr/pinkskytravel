@@ -23,7 +23,7 @@ export const tourType = defineType({
     }),
     defineField({
       name: 'destino',
-      title: 'destino',
+      title: 'Destino',
       type: 'reference',
       to: [{ type: 'destino' }],
     }),
@@ -50,6 +50,17 @@ export const tourType = defineType({
       name: 'price',
       title: 'Price',
       type: 'number',
+    }),
+    defineField({
+      name: 'currency',
+      title: 'Moneda',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'MXN', value: 'MXN' },
+          { title: 'USD', value: 'USD' },
+        ],
+      }
     }),
     defineField({
       name: 'date',
@@ -108,11 +119,6 @@ export const tourType = defineType({
       title: 'Gallery',
       type: 'array',
       of: [{ type: 'image' }],
-    }),
-    defineField({
-      name: 'leleTip',
-      title: 'El consejo de Lele',
-      type: 'text',
-    }),
+    })
   ],
 })

@@ -4,7 +4,7 @@ import Footer from '@/widgets/layout/ui/Footer';
 import Destacados from '@/widgets/home/ui/Destacados';
 import Hero from '@/widgets/home/ui/Hero';
 import Categorias from '@/widgets/home/ui/Categorias';
-import TourCarousel from '@/widgets/home/ui/TourCarousel';
+import Tours from '@/widgets/home/ui/Tours';
 import { featureFlags } from '@/shared/config/feature-flags';
 
 export default async function Home() {
@@ -16,7 +16,7 @@ export default async function Home() {
         {featureFlags.home.hero && <Hero />}
         {featureFlags.home.categories && <Categorias />}
         {featureFlags.home.featured && <Destacados />}
-        {featureFlags.home.tours && <TourCarousel />}
+        {featureFlags.home.tours && <Tours />}
       </Box>
       <Footer />
     </Box>

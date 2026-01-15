@@ -33,12 +33,11 @@ const Tours = async () => {
                 flexDirection: 'column',
                 transition: 'all 0.3s ease',
                 cursor: 'pointer',
-                overflow: 'hidden', // Add overflow hidden to clip the zoomed image
+                overflow: 'hidden',
                 '&:hover': {
-                  // Removed transform: 'translateY(-4px)'
                   boxShadow: '0 12px 24px rgba(0,0,0,0.08)',
-                  '& .tour-image': { // Target the image for zoom
-                    transform: 'scale(1.1)',
+                  '& .tour-image': {
+                    transform: { xs: 'scale(1)', md: 'scale(1.1)' },
                   }
                 }
               }}>

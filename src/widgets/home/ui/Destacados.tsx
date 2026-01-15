@@ -30,13 +30,13 @@ const Destacados = async () => {
                 <Card sx={{
                   height: '100%',
                   position: 'relative',
-                  overflow: 'hidden', // Add this
-                  transition: 'box-shadow 0.3s ease', // Add transition for shadow
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)', // Base shadow
+                  overflow: 'hidden',
+                  transition: 'box-shadow 0.3s ease',
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
                   '&:hover': {
-                    boxShadow: '0 12px 24px rgba(0,0,0,0.08)', // Hover shadow
-                    '& .destination-image': { // Target the image for zoom
-                      transform: 'scale(1.1)',
+                    boxShadow: '0 12px 24px rgba(0,0,0,0.08)',
+                    '& .destination-image': {
+                      transform: { xs: 'scale(1)', md: 'scale(1.1)' },
                     }
                   }
                 }}>

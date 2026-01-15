@@ -27,7 +27,7 @@ const Categorias = async () => {
                 '&:hover': {
                   boxShadow: '0 12px 24px rgba(0,0,0,0.08)', // Hover shadow
                   '& .destination-image': { // Target the image for zoom
-                    transform: 'scale(1.1)',
+                    transform: { xs: 'scale(1)', md: 'scale(1.1)' },
                   }
                 }
               }}>

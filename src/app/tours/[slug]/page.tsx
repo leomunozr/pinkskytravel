@@ -55,7 +55,7 @@ export default async function ToursPage({
   }
 
   return (
-    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh", border: "solid 1px red" }}>
+    <Box sx={{ display: "flex", flexDirection: "column", minHeight: "100vh" }}>
       <Navbar />
       <Box component="main" sx={{ flexGrow: 1 }}>
         {/* Hero Section */}

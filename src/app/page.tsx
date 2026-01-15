@@ -5,6 +5,7 @@ import Destacados from '@/widgets/home/ui/Destacados';
 import Hero from '@/widgets/home/ui/Hero';
 import Categorias from '@/widgets/home/ui/Categorias';
 import Tours from '@/widgets/home/ui/Tours';
+import Nosotros from '@/widgets/home/ui/Nosotros'; // New import
 import { featureFlags } from '@/shared/config/feature-flags';
 
 export default async function Home() {
@@ -17,6 +18,7 @@ export default async function Home() {
         {featureFlags.home.categories && <Categorias />}
         {featureFlags.home.featured && <Destacados />}
         {featureFlags.home.tours && <Tours />}
+        <Nosotros />
       </Box>
       <Footer />
     </Box>

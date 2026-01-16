@@ -45,3 +45,7 @@ export const FEATURED_DESTINATIONS_QUERY = groq`*[_type == "destino"][0...3] {
   region,
   highlights
 }`;
+
+export const GET_WHATSAPP_NUMBER = `
+  *[_type == "settings"][0].whatsappNumber
+`;

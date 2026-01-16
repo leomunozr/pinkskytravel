@@ -37,7 +37,7 @@ const Footer = () => {
 
           <Grid size={{ xs: 6, md: 4 }}>
             <Typography mb={2} variant="body2" color="text.secondary">
-              📜 RNT: Registro Nacional de turismo 04090151700
+              📜 Registro Nacional de turismo (RNT):  04090151700
             </Typography>
             <Typography mb={2} variant="body2" color="text.secondary">
               🤝 Socios: Asociación Mexicana de Agencias de Viajes de la Ciudad

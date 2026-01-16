@@ -3,7 +3,6 @@ import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import Button from "@mui/material/Button";
 import Chip from "@mui/material/Chip";
 import Divider from "@mui/material/Divider";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
@@ -16,8 +15,9 @@ import Navbar from "@/widgets/layout/ui/Navbar";
 import Footer from "@/widgets/layout/ui/Footer";
 import { Metadata } from "next";
 import { Tour } from "@/shared/types/tour";
-import { GET_TOUR } from "@/shared/api/sanity/queries";
 import { client } from "@/shared/api/sanity/client";
+import { GET_TOUR } from "@/shared/api/sanity/queries";
+import { WhatsAppButton } from "@/shared/ui/WhatsAppButton"; // New import
 
 // export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
 //   const { slug } = await params;
@@ -36,9 +36,7 @@ export default async function ToursPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  console.log({ slug });
   const tour = await client.fetch<Tour>(GET_TOUR, { slug });
-  console.log({ tour });
 
   if (!tour) {
     return (
@@ -83,9 +81,6 @@ export default async function ToursPage({
           }}
         >
           <Container maxWidth="md" sx={{ position: "relative", zIndex: 1 }}>
-            {/* <Typography variant="overline" sx={{ letterSpacing: 2, fontWeight: 'bold', mb: 2, display: 'block' }}>
-                    {tour?.destino?.toUpperCase()}
-                </Typography> */}
             <Typography
               gutterBottom
               component="h1"
@@ -98,14 +93,6 @@ export default async function ToursPage({
             <Typography variant="h5" sx={{ mb: 4, fontWeight: 300 }}>
               {tour.summary}
             </Typography>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              sx={{ color: "white", px: 4, py: 1.5 }}
-            >
-              Reservar Ahora
-            </Button>
           </Container>
         </Box>
 
@@ -280,6 +267,40 @@ export default async function ToursPage({
                   </Grid>
                 )}
               </Grid>
+
+              <Divider sx={{ my: 3 }} />
+
+              <Typography variant="h5" fontWeight="bold" gutterBottom>
+                Logística
+              </Typography>
+              {tour.logistics?.meetingPoint && (
+                <Box sx={{ mb: 2 }}>
+                  <Typography
+                    variant="body1"
+                    color="text.secondary"
+                    display="block"
+                  >
+                    Punto de encuentro
+                  </Typography>
+                  <Typography variant="body2">
+                    {tour.logistics?.meetingPoint}
+                  </Typography>
+                </Box>
+              )}
+              {tour.logistics?.whatToBring && (
+                <Box sx={{ mb: 3 }}>
+                  <Typography
+                    variant="h5"
+                    color="text.secondary"
+                    display="block"
+                  >
+                    Qué llevar
+                  </Typography>
+                  <Typography variant="body2">
+                    {tour.logistics?.whatToBring}
+                  </Typography>
+                </Box>
+              )}
             </Grid>
 
             {/* Right Column: Sticky Sidebar */}
@@ -311,57 +332,11 @@ export default async function ToursPage({
                     ${tour.price} {tour.currency}
                   </Typography>
 
-                  <Divider sx={{ my: 3 }} />
-
-                  <Typography
-                    variant="subtitle2"
-                    fontWeight="bold"
-                    gutterBottom
-                  >
-                    Logística
-                  </Typography>
-                  <Box sx={{ mb: 2 }}>
-                    <Typography
-                      variant="caption"
-                      color="text.secondary"
-                      display="block"
-                    >
-                      Punto de encuentro
-                    </Typography>
-                    <Typography variant="body2">
-                      {tour.logistics?.meetingPoint}
-                    </Typography>
-                  </Box>
-                  <Box sx={{ mb: 3 }}>
-                    <Typography
-                      variant="caption"
-                      color="text.secondary"
-                      display="block"
-                    >
-                      Qué llevar
-                    </Typography>
-                    <Typography variant="body2">
-                      {tour.logistics?.whatToBring}
-                    </Typography>
-                  </Box>
-
-                  <Button
-                    variant="contained"
+                  <WhatsAppButton
                     fullWidth
-                    size="large"
-                    color="primary"
-                    sx={{ color: "white", mb: 2 }}
-                  >
-                    Reservar Cupo
-                  </Button>
-                  <Typography
-                    variant="caption"
-                    color="text.secondary"
-                    align="center"
-                    display="block"
-                  >
-                    * Reserva segura con confirmación inmediata
-                  </Typography>
+                    tourTitle={tour.title}
+                    sx={{ mb: 2 }}
+                  />
                 </Box>
               </Box>
             </Grid>
